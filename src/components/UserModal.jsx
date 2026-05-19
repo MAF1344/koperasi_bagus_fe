@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react';
-import {FiX, FiUser, FiMail, FiPhone, FiMapPin} from 'react-icons/fi';
+import {FiX, FiUser, FiMail, FiPhone, FiMapPin, FiEye, FiEyeOff} from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
 const UserModal = ({isOpen, onClose, onSubmit, user, loading}) => {
   const isEdit = !!user;
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
     username: '',
@@ -144,17 +145,26 @@ const UserModal = ({isOpen, onClose, onSubmit, user, loading}) => {
                 <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                   Password <span className="text-red-500">*</span>
                 </label>
-                <input
-                  type="password"
-                  id="password"
-                  name="password"
-                  value={formData.password}
-                  onChange={handleChange}
-                  className="block w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  placeholder="Minimal 6 karakter"
-                  required={!isEdit}
-                  minLength="6"
-                />
+                <div className="relative">
+                  <input
+                    type={showPassword ? 'text' : 'password'}
+                    id="password"
+                    name="password"
+                    value={formData.password}
+                    onChange={handleChange}
+                    className="block w-full px-3 pr-10 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Minimal 6 karakter"
+                    required={!isEdit}
+                    minLength="6"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500 hover:text-gray-700 focus:outline-none"
+                  >
+                    {showPassword ? <FiEyeOff className="w-5 h-5" /> : <FiEye className="w-5 h-5" />}
+                  </button>
+                </div>
               </div>
             )}
 

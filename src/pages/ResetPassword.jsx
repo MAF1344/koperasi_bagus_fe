@@ -144,11 +144,6 @@ const ResetPassword = () => {
               </div>
             </div>
 
-            {/* Password Match Indicator */}
-            {formData.newPassword && formData.confirmPassword && (
-              <div className={`text-sm ${formData.newPassword === formData.confirmPassword ? 'text-green-600' : 'text-red-600'}`}>{formData.newPassword === formData.confirmPassword ? '✓ Password cocok' : '✗ Password tidak cocok'}</div>
-            )}
-
             <button type="submit" disabled={loading || !formData.token} className="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50">
               {loading ? 'Memproses...' : 'Reset Password'}
             </button>
