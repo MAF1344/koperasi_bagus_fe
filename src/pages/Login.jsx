@@ -146,22 +146,6 @@ const Login = () => {
               )}
             </button>
           </form>
-
-          {/* Info Default Credentials */}
-          <div className="mt-6 p-4 bg-gray-50 rounded-lg">
-            <p className="text-xs text-gray-600 text-center mb-2 font-semibold">Default Login Credentials:</p>
-            <div className="text-xs text-gray-500 space-y-1">
-              <p>
-                <strong>SuperAdmin:</strong> superadmin / admin123
-              </p>
-              <p>
-                <strong>Admin:</strong> admin1 / admin123
-              </p>
-              <p>
-                <strong>Pengunjung:</strong> pengunjung / pengunjung123
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Footer */}
