@@ -13,20 +13,23 @@ const Login = () => {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
+    if (error) setError('');
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
 
     // Validation
     if (!formData.username || !formData.password) {
-      console.error('Username dan password harus diisi');
+      setError('username atau password salah');
       return;
     }
 
@@ -40,14 +43,16 @@ const Login = () => {
       const result = await login(formData.username, formData.password);
       console.log('Login result:', result);
 
-      if (result.success) {
+      if (result.success) { 
         console.log('✅ Login berhasil, redirecting to dashboard...');
         navigate('/dashboard');
       } else {
         console.error('❌ Login gagal:', result.message);
+        setError('username atau password salah');
       }
     } catch (error) {
       console.error('❌ Login error:', error);
+      setError('username atau password salah');
     } finally {
       setLoading(false);
     }
@@ -70,6 +75,15 @@ const Login = () => {
         {/* Login Form */}
         <div className="bg-white rounded-2xl shadow-xl p-8">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">Login</h2>
+
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border-l-4 border-red-500 rounded-r-lg text-red-700 flex items-center shadow-sm">
+              <svg className="w-5 h-5 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-medium">{error}</span>
+            </div>
+          )}
 
           <form onSubmit={handleSubmit} className="space-y-6">
             {/* Username */}
