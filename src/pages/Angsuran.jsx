@@ -60,12 +60,14 @@ const Angsuran = () => {
 
   // Get status badge
   const getStatusBadge = (status) => {
+    const normalizedStatus = status?.toLowerCase?.() || 'belum_bayar';
     const badges = {
       belum_bayar: {color: 'bg-yellow-100 text-yellow-800', icon: FiClock, label: 'Belum Bayar'},
+      sudah_bayar: {color: 'bg-green-100 text-green-800', icon: FiCheckCircle, label: 'Sudah Bayar'},
       lunas: {color: 'bg-green-100 text-green-800', icon: FiCheckCircle, label: 'Lunas'},
       terlambat: {color: 'bg-red-100 text-red-800', icon: FiAlertTriangle, label: 'Terlambat'},
     };
-    const badge = badges[status] || badges.belum_bayar;
+    const badge = badges[normalizedStatus] || badges.belum_bayar;
     const Icon = badge.icon;
 
     return (
