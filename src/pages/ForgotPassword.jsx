@@ -93,7 +93,7 @@ const ForgotPassword = () => {
               </div>
 
               <button type="submit" disabled={loading} className="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50">
-                {loading ? 'Memproses...' : 'Kirim Link Reset'}
+                {loading ? 'Memproses...' : 'Kirim Token Reset'}
               </button>
             </form>
           ) : (
