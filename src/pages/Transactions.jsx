@@ -416,7 +416,7 @@ const Transactions = () => {
                   onClick={handlePayment}
                   disabled={loading || cart.length === 0 || !paymentAmount || changeAmount < 0}
                   className="flex-1 px-4 py-3 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:opacity-90 transition-opacity font-bold disabled:opacity-50 disabled:cursor-not-allowed">
-                  {loading ? 'Memproses...' : 'BAYAR & CETAK'}
+                  {loading ? 'Memproses...' : 'Checkout'}
                 </button>
               </div>
             </div>
